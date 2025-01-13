@@ -1,4 +1,4 @@
-VERSION := v0.0.1
+VERSION := v0.0.2
 
 EXTENSION_NAME := gh-content
 EXTENSION := thombashi/$(EXTENSION_NAME)
