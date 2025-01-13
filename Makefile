@@ -46,7 +46,7 @@ fmt: $(GOIMPORTS) $(TESTIFYILINT)
 
 .PHONY: help
 help: build
-	./$(EXTENSION_NAME) --help
+	$(BIN_DIR)/$(EXTENSION_NAME) --help
 
 .PHONY: uninstall
 uninstall:
