@@ -9,7 +9,7 @@ import (
 
 	"github.com/phsym/console-slog"
 	"github.com/thombashi/eoe"
-	"github.com/thombashi/gh-content/pkg/contents"
+	"github.com/thombashi/gh-content/pkg/content"
 )
 
 func newLogger(level slog.Level) *slog.Logger {
@@ -25,13 +25,13 @@ func newLogger(level slog.Level) *slog.Logger {
 func subMain(repoID, filePath, outputFilePath string) error {
 	var err error
 
-	content, err := contents.FetchContent(repoID, filePath)
+	body, err := content.FetchContent(repoID, filePath)
 	if err != nil {
 		return fmt.Errorf("failed to fetch the content: %w", err)
 	}
 
 	if outputFilePath == "" {
-		fmt.Println(content.String())
+		fmt.Println(body.String())
 		return nil
 	}
 
@@ -60,7 +60,7 @@ func subMain(repoID, filePath, outputFilePath string) error {
 		}
 	}
 
-	return os.WriteFile(outputFilePath, content.Bytes(), 0744)
+	return os.WriteFile(outputFilePath, body.Bytes(), 0744)
 }
 
 func main() {
